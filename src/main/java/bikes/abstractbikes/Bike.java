@@ -15,7 +15,6 @@ public abstract class Bike {
     private final String price;
 
 
-
     protected Bike(String brand, String lightAvailability, String color, String weight, String price) {
         this.brand = brand;
         this.lightAvailability = lightAvailability;

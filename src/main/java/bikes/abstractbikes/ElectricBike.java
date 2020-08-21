@@ -15,6 +15,7 @@ public abstract class ElectricBike extends Bike {
         this.batteryCapacity = batteryCapacity;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

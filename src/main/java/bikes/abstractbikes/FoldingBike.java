@@ -1,10 +1,8 @@
-package bikes;
-
-import bikes.abstractbikes.Bike;
+package bikes.abstractbikes;
 
 import java.util.Objects;
 
-public class FoldingBike extends Bike {
+public abstract class FoldingBike extends Bike {
 
     public static final String BIKE_TYPE = "FOLDING BIKE";
 

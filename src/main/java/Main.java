@@ -1,21 +1,36 @@
-import bikes.utils.CatalogMaker;
+import bikes.BikeTypes;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
         final String fileName = "C:\\Users\\User\\IdeaProjects\\Ebike\\src\\test\\resources\\file.txt";
+        List<String> strings = Files.readAllLines(Paths.get(fileName));
+        Set<String> bikeTypeAndBrands = new HashSet<>();
+        Map<String, List<String>> bikes = new HashMap<>();
 
-        CatalogMaker.getCatalog(fileName);
+        for (int i = strings.size() - 1; i > -1; i--) {
+            String bikeTypeAndBrand = strings.get(i).substring(0, strings.get(i).indexOf(";"));
+            bikeTypeAndBrands.add(bikeTypeAndBrand);
+        }
+
+        for (String bikeTypeAndBrand : bikeTypeAndBrands) {
+            bikes.put(bikeTypeAndBrand, new ArrayList<>());
+        }
+
+        for (int i = strings.size() - 1; i > -1; i--) {
+            String bikeTypeAndBrand = strings.get(i).substring(0, strings.get(i).indexOf(";"));
+            String[] splitSpecifications = strings.get(i).substring(strings.get(i).indexOf(";")).split(";");
+            bikes.get(bikeTypeAndBrand).add(BikeTypes.getSpecifications(splitSpecifications, bikeTypeAndBrand));
+        }
 
 
-
-
-
-
-
+        //TODO
         /*
 
         List<Ebike> ebikes = new ArrayList<>();
